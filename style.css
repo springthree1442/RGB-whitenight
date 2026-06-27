@@ -2,158 +2,371 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(86, 118, 216, 0.35), transparent 32%),
-    radial-gradient(circle at bottom right, rgba(79, 139, 104, 0.25), transparent 35%),
-    linear-gradient(135deg, #080912, #151827 48%, #07070d);
-  color: #f4f1ea;
+:root {
+  --bg: #07080d;
+  --panel: rgba(15, 17, 26, 0.92);
+  --panel-strong: rgba(20, 23, 35, 0.98);
+  --line: #34384a;
+  --text: #f2f4f8;
+  --muted: #aab0c0;
+  --accent: #d7b36a;
+  --accent-soft: rgba(215, 179, 106, 0.18);
+  --danger: #b65454;
 }
 
-.game-screen {
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(80, 92, 140, 0.25), transparent 35%),
+    linear-gradient(180deg, #0d1020 0%, #07080d 55%, #030407 100%);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#game {
+  width: 100%;
   min-height: 100vh;
   position: relative;
-  padding: 28px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
   overflow: hidden;
 }
 
-.game-screen::before {
+/* 화면 전환 */
+
+.screen {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* 타이틀 화면 */
+
+#title-screen {
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.title-box {
+  width: min(720px, 92vw);
+  padding: 48px 28px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(20, 23, 35, 0.92), rgba(10, 12, 20, 0.96)),
+    radial-gradient(circle at top, rgba(215, 179, 106, 0.14), transparent 45%);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.latin-title {
+  margin: 0 0 12px;
+  color: var(--accent);
+  letter-spacing: 0.22em;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.title-box h1 {
+  margin: 0;
+  font-size: clamp(32px, 7vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.subtitle {
+  margin: 18px 0 32px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.title-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.title-buttons button,
+.name-box button,
+#top-bar button,
+.panel-content button {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.title-buttons button:hover,
+.name-box button:hover,
+#top-bar button:hover,
+.panel-content button:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* 이름 입력 화면 */
+
+#name-screen {
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.name-box {
+  width: min(520px, 92vw);
+  padding: 34px 24px;
+  border: 1px solid var(--line);
+  background: var(--panel-strong);
+  text-align: center;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
+}
+
+.name-box p {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.small-text {
+  color: var(--muted);
+  font-size: 14px !important;
+}
+
+#name-input {
+  width: 100%;
+  margin: 22px 0 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  font-size: 16px;
+  outline: none;
+}
+
+#name-input:focus {
+  border-color: var(--accent);
+}
+
+/* 플레이 화면 */
+
+#play-screen {
+  display: none;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px;
+}
+
+#play-screen.active {
+  display: flex;
+}
+
+#top-bar {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+#top-bar button {
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+/* 배경 영역 */
+
+#scene-area {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(98, 79, 120, 0.12), transparent 40%),
+    linear-gradient(180deg, rgba(20, 23, 35, 0.2), rgba(0, 0, 0, 0.72));
+  z-index: 0;
+}
+
+#scene-area::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 56px 56px;
-  opacity: 0.24;
-  pointer-events: none;
+    linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.025) 50%, transparent 100%);
+  opacity: 0.55;
 }
 
-.game-screen::after {
-  content: "GRAND VINE";
+#chapter-title {
   position: absolute;
-  top: 36px;
-  right: 42px;
-  color: rgba(215, 179, 106, 0.18);
-  font-size: 14px;
-  letter-spacing: 0.42em;
-  pointer-events: none;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(242, 244, 248, 0.82);
+  font-size: clamp(22px, 4vw, 38px);
+  letter-spacing: -0.04em;
+  text-align: center;
 }
 
-.dialogue-box {
+/* 대사창 */
+
+#dialogue-box {
   position: relative;
-  width: min(960px, 100%);
-  min-height: 230px;
-  border: 1px solid rgba(215, 179, 106, 0.62);
-  border-radius: 10px;
-  background:
-    linear-gradient(180deg, rgba(19, 23, 38, 0.94), rgba(8, 10, 18, 0.96));
-  box-shadow:
-    0 22px 60px rgba(0, 0, 0, 0.62),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  overflow: hidden;
-  z-index: 1;
-}
-
-.dialogue-box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 7px;
-  height: 100%;
-  background: linear-gradient(180deg, #5676d8, #4f8b68);
-}
-
-.speaker-bar {
-  width: fit-content;
-  min-width: 150px;
-  margin: 18px 0 0 24px;
-  padding: 9px 20px 10px;
-  border: 1px solid rgba(215, 179, 106, 0.7);
-  border-radius: 999px;
-  background: rgba(7, 8, 14, 0.9);
-  color: #d7b36a;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.icon {
-  display: none;
-}
-
-.dialogue-text {
-  padding: 28px 38px 54px;
+  z-index: 2;
+  width: min(980px, 100%);
   min-height: 150px;
+  margin: 0 auto;
+  padding: 22px 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
 }
 
-#dialogue {
-  margin: 0;
-  color: #f7f2e7;
-  font-size: 24px;
-  line-height: 1.85;
+#speaker-name {
+  min-height: 22px;
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+#dialogue-text {
+  white-space: pre-line;
+  line-height: 1.75;
+  font-size: clamp(16px, 2.2vw, 19px);
   word-break: keep-all;
 }
 
-#next-button {
+#next-mark {
   position: absolute;
-  right: 28px;
-  bottom: 18px;
-  width: 46px;
-  height: 34px;
-  border: 1px solid rgba(215, 179, 106, 0.7);
+  right: 20px;
+  bottom: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* 선택지 */
+
+#choice-box {
+  position: relative;
+  z-index: 3;
+  width: min(980px, 100%);
+  margin: 12px auto 0;
+  display: grid;
+  gap: 8px;
+}
+
+.choice-button {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(12, 14, 23, 0.94);
+  color: var(--text);
+  font-size: 16px;
+  text-align: left;
+}
+
+.choice-button:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* 목록 패널 */
+
+.panel {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.panel.hidden {
+  display: none;
+}
+
+.panel-content {
+  width: min(420px, 92vw);
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel-strong);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
+}
+
+.panel-content h2 {
+  margin: 0 0 16px;
+  color: var(--accent);
+}
+
+#task-list {
+  margin: 0 0 22px;
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+.new {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 6px;
   border-radius: 999px;
-  background: rgba(215, 179, 106, 0.08);
-  color: #d7b36a;
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
+  background: var(--danger);
+  color: white;
+  font-size: 12px;
 }
 
-#next-button:active {
-  transform: translateY(2px);
-}
+/* 모바일 보정 */
 
-@media (max-width: 720px) {
-  .game-screen {
-    padding: 16px;
+@media (max-width: 640px) {
+  #play-screen {
+    padding: 12px;
   }
 
-  .game-screen::after {
-    top: 22px;
-    right: 18px;
-    font-size: 11px;
+  #top-bar {
+    top: 10px;
+    right: 10px;
   }
 
-  .dialogue-box {
-    min-height: 220px;
+  #dialogue-box {
+    min-height: 170px;
+    padding: 20px 18px 28px;
   }
 
-  .speaker-bar {
-    margin: 16px 0 0 20px;
-    font-size: 15px;
-  }
-
-  .dialogue-text {
-    padding: 24px 26px 56px;
-  }
-
-  #dialogue {
-    font-size: 20px;
-    line-height: 1.75;
-  }
-
-  #next-button {
-    right: 20px;
-    bottom: 16px;
+  .title-box {
+    padding: 40px 20px;
   }
 }
