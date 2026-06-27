@@ -1,54 +1,274 @@
-const story = [
-  {
-    speaker: "Narration",
-    text: "어둠이 내려앉은 거리."
-  },
-  {
-    speaker: "Narration",
-    text: "저물어가는 하루를 마무리 하기 위해 사람들은 짙은 어둠 속으로 모인다."
-  },
-  {
-    speaker: "Narration",
-    text: "인파가 늘어남에 따라 뒷골목의 네온사인이 하나 둘 모습을 드러내고"
-  },
-  {
-    speaker: "Narration",
-    text: "어쩌면 정오보다 밝을 밤의 거리가 두 번째 오늘을 맞이하도록 금세 온 건물의 조명을 태운다."
-  },
-  {
-    speaker: "Narration",
-    text: "고된 반나절 간의 피로와 근심걱정 따위를 내일 아침이면 아무 일 없던 듯이 뒤로 넘겨버려야 하므로"
-  },
-  {
-    speaker: "SYSTEM",
-    text: "[ Chapter.1 조명이 밝은 밤 종료 ]"
-  }
-];
+// ===============================
+// 백야: 일출과 일몰 사이
+// 기본 대사 엔진
+// ===============================
 
-let index = 0;
+let playerName = "플레이어";
+let currentIndex = 0;
+let currentScript = [];
+let isWaitingChoice = false;
 
-const speaker = document.getElementById("speaker");
-const dialogue = document.getElementById("dialogue");
-const button = document.getElementById("next-button");
+const SAVE_KEY = "rgb_whitenight_save";
 
-function showLine() {
-  speaker.textContent = story[index].speaker;
-  dialogue.textContent = story[index].text;
+// 화면 요소
+const titleScreen = document.getElementById("title-screen");
+const nameScreen = document.getElementById("name-screen");
+const playScreen = document.getElementById("play-screen");
+
+const startButton = document.getElementById("start-button");
+const continueButton = document.getElementById("continue-button");
+const nameInput = document.getElementById("name-input");
+const nameConfirmButton = document.getElementById("name-confirm-button");
+
+const speakerName = document.getElementById("speaker-name");
+const dialogueText = document.getElementById("dialogue-text");
+const dialogueBox = document.getElementById("dialogue-box");
+const choiceBox = document.getElementById("choice-box");
+const chapterTitle = document.getElementById("chapter-title");
+
+const taskButton = document.getElementById("task-button");
+const taskPanel = document.getElementById("task-panel");
+const closeTaskButton = document.getElementById("close-task-button");
+
+const saveButton = document.getElementById("save-button");
+const titleButton = document.getElementById("title-button");
+
+// ===============================
+// 화면 전환
+// ===============================
+
+function showScreen(screen) {
+  titleScreen.classList.remove("active");
+  nameScreen.classList.remove("active");
+  playScreen.classList.remove("active");
+
+  screen.classList.add("active");
 }
 
-button.addEventListener("click", () => {
-  index++;
+// ===============================
+// 저장 / 불러오기
+// ===============================
 
-  if (index >= story.length) {
-    button.textContent = "×";
+function saveGame() {
+  const saveData = {
+    playerName,
+    currentIndex,
+    chapter: "chapter1"
+  };
+
+  localStorage.setItem(SAVE_KEY, JSON.stringify(saveData));
+}
+
+function loadGame() {
+  const rawData = localStorage.getItem(SAVE_KEY);
+
+  if (!rawData) {
+    alert("저장된 데이터가 없습니다.");
     return;
   }
 
-  showLine();
+  const saveData = JSON.parse(rawData);
 
-  if (index === story.length - 1) {
-    button.textContent = "끝";
+  playerName = saveData.playerName || "플레이어";
+  currentIndex = saveData.currentIndex || 0;
+  currentScript = CHAPTER_1;
+
+  showScreen(playScreen);
+  renderCurrentLine();
+}
+
+function hasSaveData() {
+  return localStorage.getItem(SAVE_KEY) !== null;
+}
+
+// ===============================
+// 텍스트 처리
+// ===============================
+
+function replacePlayerName(text) {
+  return text.replaceAll("{player}", playerName);
+}
+
+function getCharacterName(characterId) {
+  if (!characterId) return "";
+
+  const character = CHARACTERS[characterId];
+
+  if (!character) return characterId;
+
+  if (characterId === "player") {
+    return playerName;
   }
+
+  return character.name;
+}
+
+function getCharacterColor(characterId) {
+  const character = CHARACTERS[characterId];
+
+  if (!character) return "#f2f4f8";
+
+  return character.color || "#f2f4f8";
+}
+
+// ===============================
+// 대사 출력
+// ===============================
+
+function renderCurrentLine() {
+  isWaitingChoice = false;
+  choiceBox.innerHTML = "";
+
+  if (currentIndex >= currentScript.length) {
+    speakerName.textContent = "";
+    dialogueText.textContent = "[ Chapter.1 조명이 밝은 밤 종료 ]";
+    saveGame();
+    return;
+  }
+
+  const line = currentScript[currentIndex];
+
+  if (line.type === "title") {
+    chapterTitle.textContent = line.text;
+    currentIndex++;
+    renderCurrentLine();
+    return;
+  }
+
+  if (line.type === "narration") {
+    speakerName.textContent = "";
+    dialogueText.textContent = replacePlayerName(line.text);
+  }
+
+  if (line.type === "dialogue") {
+    speakerName.textContent = getCharacterName(line.speaker);
+    speakerName.style.color = getCharacterColor(line.speaker);
+    dialogueText.textContent = replacePlayerName(line.text);
+  }
+
+  if (line.type === "task") {
+    dialogueText.textContent = line.text || "【목록】이 갱신되었습니다.";
+    currentIndex++;
+    saveGame();
+    return;
+  }
+
+  if (line.type === "choice") {
+    renderChoice(line);
+    return;
+  }
+
+  saveGame();
+}
+
+// ===============================
+// 선택지 출력
+// ===============================
+
+function renderChoice(line) {
+  isWaitingChoice = true;
+
+  speakerName.textContent = "";
+  dialogueText.textContent = line.text || "어떻게 할까?";
+  choiceBox.innerHTML = "";
+
+  line.choices.forEach((choice) => {
+    const button = document.createElement("button");
+    button.className = "choice-button";
+    button.textContent = `< ${choice.label} >`;
+
+    button.addEventListener("click", () => {
+      isWaitingChoice = false;
+
+      const nextLines = choice.result || [];
+
+      currentScript.splice(currentIndex + 1, 0, ...nextLines);
+
+      currentIndex++;
+      choiceBox.innerHTML = "";
+      renderCurrentLine();
+    });
+
+    choiceBox.appendChild(button);
+  });
+
+  saveGame();
+}
+
+// ===============================
+// 다음 대사로 이동
+// ===============================
+
+function nextLine() {
+  if (isWaitingChoice) return;
+
+  currentIndex++;
+  renderCurrentLine();
+}
+
+// ===============================
+// 게임 시작
+// ===============================
+
+function startNewGame() {
+  localStorage.removeItem(SAVE_KEY);
+
+  playerName = "플레이어";
+  currentIndex = 0;
+  currentScript = CHAPTER_1;
+
+  showScreen(nameScreen);
+}
+
+function confirmName() {
+  const inputValue = nameInput.value.trim();
+
+  if (inputValue.length > 0) {
+    playerName = inputValue;
+  } else {
+    playerName = "플레이어";
+  }
+
+  currentIndex = 0;
+  currentScript = CHAPTER_1;
+
+  showScreen(playScreen);
+  renderCurrentLine();
+}
+
+// ===============================
+// 버튼 이벤트
+// ===============================
+
+startButton.addEventListener("click", startNewGame);
+
+continueButton.addEventListener("click", loadGame);
+
+nameConfirmButton.addEventListener("click", confirmName);
+
+dialogueBox.addEventListener("click", nextLine);
+
+taskButton.addEventListener("click", () => {
+  taskPanel.classList.remove("hidden");
 });
 
-showLine();
+closeTaskButton.addEventListener("click", () => {
+  taskPanel.classList.add("hidden");
+});
+
+saveButton.addEventListener("click", () => {
+  saveGame();
+  alert("저장되었습니다.");
+});
+
+titleButton.addEventListener("click", () => {
+  showScreen(titleScreen);
+});
+
+// ===============================
+// 처음 실행 시
+// ===============================
+
+if (!hasSaveData()) {
+  continueButton.disabled = true;
+}
