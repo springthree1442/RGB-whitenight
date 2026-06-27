@@ -3,25 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>백야: 일출과 일몰 사이</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <main class="game-screen">
-    <section class="dialogue-box">
-      <div class="speaker-bar">
-        <span class="icon">💬</span>
-        <span id="speaker">플레이어</span>
+  <main id="game">
+    <!-- 타이틀 화면 -->
+    <section id="title-screen" class="screen active">
+      <div class="title-box">
+        <p class="latin-title">Quo vadimus?</p>
+        <h1>백야: 일출과 일몰 사이</h1>
+        <p class="subtitle">당신은 다음으로 향하는 길을 찾을 수 있습니까?</p>
+
+        <div class="title-buttons">
+          <button id="start-button">처음부터 시작</button>
+          <button id="continue-button">이어하기</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 이름 입력 화면 -->
+    <section id="name-screen" class="screen">
+      <div class="name-box">
+        <p>[이름을 입력해주세요.]</p>
+        <p class="small-text">앞으로 캐릭터들이 당신을 이렇게 부릅니다.</p>
+
+        <input id="name-input" type="text" placeholder="미입력시 기본 닉네임 - 플레이어" />
+
+        <button id="name-confirm-button">확인</button>
+      </div>
+    </section>
+
+    <!-- 게임 본문 화면 -->
+    <section id="play-screen" class="screen">
+      <!-- 상단 메뉴 -->
+      <div id="top-bar">
+        <button id="task-button">목록</button>
+        <button id="save-button">저장</button>
+        <button id="title-button">타이틀</button>
       </div>
 
-      <div class="dialogue-text">
-        <p id="dialogue">사건 이후 2주가 지났다.</p>
+      <!-- 배경/장면 영역 -->
+      <div id="scene-area">
+        <div id="chapter-title"></div>
       </div>
 
-      <button id="next-button">⌄</button>
+      <!-- 대사창 -->
+      <div id="dialogue-box">
+        <div id="speaker-name"></div>
+        <div id="dialogue-text"></div>
+        <div id="next-mark">▼</div>
+      </div>
+
+      <!-- 선택지 영역 -->
+      <div id="choice-box"></div>
+    </section>
+
+    <!-- 목록 창 -->
+    <section id="task-panel" class="panel hidden">
+      <div class="panel-content">
+        <h2>【목록】</h2>
+        <ul id="task-list">
+          <li>???을 서류봉투와 함께 룸으로 안내하기</li>
+          <li><span class="new">new</span> 테이블 B의 업무</li>
+        </ul>
+        <button id="close-task-button">닫기</button>
+      </div>
     </section>
   </main>
 
+  <!-- 데이터 파일 먼저 불러오기 -->
+  <script src="data/characters.js"></script>
+  <script src="data/chapter1.js"></script>
+
+  <!-- 게임 실행 코드 -->
   <script src="script.js"></script>
 </body>
 </html>
