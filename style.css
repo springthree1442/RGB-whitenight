@@ -1,17 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  background: #101522;
-  color: #f5f5f5;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  text-align: center;
-  padding: 80px 20px;
+  background: linear-gradient(135deg, #1b1d29, #080910);
+  color: #222;
 }
 
-h1 {
-  color: #d7b36a;
-  font-size: 36px;
+.game-screen {
+  min-height: 100vh;
+  position: relative;
+  padding: 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
-p {
-  font-size: 18px;
+.dialogue-box {
+  width: min(920px, 100%);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid #4f3b73;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  margin-bottom: 24px;
+}
+
+.speaker-bar {
+  background: #4f3b73;
+  color: #fff;
+  padding: 14px 22px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  font-size: 22px;
+}
+
+.dialogue-text {
+  min-height: 180px;
+  background: #f4efe4;
+  padding: 28px 34px 52px;
+  font-size: 28px;
+  line-height: 1.7;
+}
+
+#dialogue {
+  margin: 0;
+}
+
+#next-button {
+  position: absolute;
+  right: 48px;
+  bottom: 48px;
+  border: none;
+  background: transparent;
+  color: #7b609f;
+  font-size: 42px;
+  cursor: pointer;
+}
+
+#next-button:active {
+  transform: translateY(2px);
+}
+
+@media (max-width: 720px) {
+  .game-screen {
+    padding: 16px;
+  }
+
+  .dialogue-box {
+    margin-bottom: 12px;
+  }
+
+  .speaker-bar {
+    font-size: 18px;
+    padding: 12px 18px;
+  }
+
+  .dialogue-text {
+    min-height: 160px;
+    font-size: 22px;
+    padding: 24px 24px 48px;
+  }
+
+  #next-button {
+    right: 32px;
+    bottom: 34px;
+    font-size: 36px;
+  }
 }
