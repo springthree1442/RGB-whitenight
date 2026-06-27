@@ -34,13 +34,23 @@ const CHARACTERS = {
     color: "#b8c7ff"
   },
 
-  loudMan: {
+  guestMan: {
+    name: "건장한 체격의 손님",
+    color: "#c9c9c9"
+  },
+
+  noisyMan: {
     name: "시끄러운 무리의 남성",
     color: "#c9c9c9"
   },
 
-  loudWoman: {
+  noisyWoman: {
     name: "소란스러운 무리의 여성",
     color: "#c9c9c9"
+  },
+
+  device: {
+    name: "통신 장치",
+    color: "#8fa6ff"
   }
 };
