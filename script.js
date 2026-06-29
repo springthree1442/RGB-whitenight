@@ -11,7 +11,7 @@ let isWaitingChoice = false;
 let isTyping = false;
 let typingTimer = null;
 let fullText = "";
-let typingSpeed = 100; // 숫자가 작을수록 빠름
+let typingSpeed = 40; // 숫자가 작을수록 빠름
 
 const SAVE_KEY = "rgb_whitenight_save";
 
