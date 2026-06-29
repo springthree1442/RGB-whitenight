@@ -52,5 +52,15 @@ const CHARACTERS = {
   device: {
     name: "통신 장치",
     color: "#8fa6ff"
+  },
+
+    voice: {
+    name: "어딘가의 목소리",
+    color: "#aab0c0"
+  },
+
+  wheatMan: {
+    name: "밀색 머리의 남성",
+    color: "#d7b36a"
   }
 };
