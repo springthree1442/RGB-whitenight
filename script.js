@@ -8,6 +8,11 @@ let currentIndex = 0;
 let currentScript = [];
 let isWaitingChoice = false;
 
+let isTyping = false;
+let typingTimer = null;
+let fullText = "";
+let typingSpeed = 28; // 숫자가 작을수록 빠름
+
 const SAVE_KEY = "rgb_whitenight_save";
 
 // 화면 요소
@@ -84,6 +89,33 @@ function hasSaveData() {
 // ===============================
 // 텍스트 처리
 // ===============================
+function typeText(text) {
+  clearTimeout(typingTimer);
+
+  isTyping = true;
+  fullText = text;
+  dialogueText.textContent = "";
+
+  let i = 0;
+
+  function typing() {
+    if (i < fullText.length) {
+      dialogueText.textContent += fullText[i];
+      i++;
+      typingTimer = setTimeout(typing, typingSpeed);
+    } else {
+      isTyping = false;
+    }
+  }
+
+  typing();
+}
+
+function showFullText() {
+  clearTimeout(typingTimer);
+  dialogueText.textContent = fullText;
+  isTyping = false;
+}
 
 function replacePlayerName(text) {
   return text.replaceAll("{player}", playerName);
@@ -141,15 +173,15 @@ function renderCurrentLine() {
 
   if (line.type === "narration") {
     speakerName.textContent = "";
-    dialogueText.textContent = replacePlayerName(line.text);
+    typeText(replacePlayerName(line.text));
   }
 
   if (line.type === "dialogue") {
     speakerName.textContent = getCharacterName(line.speaker);
     speakerName.style.color = getCharacterColor(line.speaker);
-    dialogueText.textContent = replacePlayerName(line.text);
+    typeText(replacePlayerName(line.text));
   }
-
+ 
   if (line.type === "task") {
     dialogueText.textContent = line.text || "【목록】이 갱신되었습니다.";
     currentIndex++;
@@ -205,6 +237,11 @@ function renderChoice(line) {
 
 function nextLine() {
   if (isWaitingChoice) return;
+
+  if (isTyping) {
+    showFullText();
+    return;
+  }
 
   currentIndex++;
   renderCurrentLine();
