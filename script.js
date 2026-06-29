@@ -134,6 +134,10 @@ function renderCurrentLine() {
     renderCurrentLine();
     return;
   }
+  if (line.type === "nameInput") {
+  showScreen(nameScreen);
+  return;
+}
 
   if (line.type === "narration") {
     speakerName.textContent = "";
@@ -217,7 +221,8 @@ function startNewGame() {
   currentIndex = 0;
   currentScript = CHAPTER_1;
 
-  showScreen(nameScreen);
+  showScreen(playScreen);
+  renderCurrentLine();
 }
 
 function confirmName() {
@@ -229,8 +234,7 @@ function confirmName() {
     playerName = "플레이어";
   }
 
-  currentIndex = 0;
-  currentScript = CHAPTER_1;
+  currentIndex++;
 
   showScreen(playScreen);
   renderCurrentLine();
