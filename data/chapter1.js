@@ -52,7 +52,12 @@ const CHAPTER_1 = [
     type: "narration",
     text: "우리 갬빗 루즈는 언제나 당신에게 최고로 화려한 밤을 선사하리라."
   },
-
+  
+{
+  id: "ch1_name_input",
+  type: "nameInput"
+},
+  
   {
     id: "ch1_009",
     type: "narration",
