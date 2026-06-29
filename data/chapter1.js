@@ -301,5 +301,452 @@ const CHAPTER_1 = [
     id: "ch1_037",
     type: "narration",
     text: "[ 테이블 B로 가자. ]"
-  }
+  },
+  {
+  id: "ch1_038",
+  type: "narration",
+  text: "테이블 B로 향하는 사이, 유난히 큰 웃음소리가 홀 한쪽에서 터졌다."
+},
+
+{
+  id: "ch1_039",
+  type: "narration",
+  text: "소란의 중심에는 붉은 눈의 사내와 처음 보는 손님 몇 명이 모여 있었다."
+},
+
+{
+  id: "ch1_040",
+  type: "dialogue",
+  speaker: "player",
+  text: "…?"
+},
+
+{
+  id: "ch1_041",
+  type: "dialogue",
+  speaker: "dealerB",
+  text: "오셨군요, {player}!"
+},
+
+{
+  id: "ch1_042",
+  type: "narration",
+  text: "붉은 눈의 사내 일행을 둘러보려던 찰나, 딜러가 나를 부르며 환하게 웃었다."
+},
+
+{
+  id: "ch1_043",
+  type: "dialogue",
+  speaker: "dealerB",
+  text: "지하 2층의 보조 매니저가 당신이라 정말 다행이에요."
+},
+
+{
+  id: "ch1_044",
+  type: "narration",
+  text: "이 사람은, 아마 얼룩말이 갬빗 루즈를 맡았을 때랑 겹치게 이쪽으로 이동됐던 것 같은데."
+},
+
+{
+  id: "ch1_045",
+  type: "narration",
+  text: "예전 팀 동료들이 모조리 사망했다고 했던가? 싹싹해보이는데 안타깝게 됐다."
+},
+
+{
+  id: "ch1_046",
+  type: "dialogue",
+  speaker: "player",
+  text: "지금 있는 손님들만 보면 되는겁니까?"
+},
+
+{
+  id: "ch1_047",
+  type: "dialogue",
+  speaker: "dealerB",
+  text: "네! 이분들까지만 맡고 B는 오늘 정리하기로 했습니다!"
+},
+
+{
+  id: "ch1_048",
+  type: "dialogue",
+  speaker: "dealerB",
+  text: "얼룩말이 급하게 부탁한 게 있어서요… 그렇지만, {player}라서 안심했습니다."
+},
+
+{
+  id: "ch1_049",
+  type: "dialogue",
+  speaker: "dealerB",
+  text: "게임의 룰은 알고 계셨던가요?"
+},
+
+{
+  id: "ch1_choice_002",
+  type: "choice",
+  text: "어떻게 대답할까?",
+  choices: [
+    {
+      label: "모른다.",
+      result: [
+        {
+          id: "ch1_choice_002_a_001",
+          type: "dialogue",
+          speaker: "dealerB",
+          text: "아하, 빠르게 알려드리겠습니다."
+        },
+        {
+          id: "ch1_choice_002_a_002",
+          type: "narration",
+          text: "[ 룰렛 777 게임방법 ]\n손님이 룰렛을 돌려 나온 세 개의 숫자 결과에 따라 배당이 달라집니다.\n\n*miss* - 모두 다른 숫자 (0배)\n*pair* - 두 개의 같은 숫자 (1배, 원금회수)\n*straight* - 오름차순으로 연속된 숫자 (1.5배)\n***JACKPOT*** - 세 개의 같은 숫자 (3배)\n\n딜러는 결과 확인 후 알맞은 배당을 선택하여 손님에게 칩을 제공합니다.\n잘못된 배당을 선택하였거나 손님의 불만 게이지가 상승합니다. 불만 게이지가 끝까지 차오르면 게임에 실패합니다.\n\n게임시간: 15초\n성공 조건: 총 3판의 배당을 정확히 처리\n성공 시: 다음 스토리 진행\n실패 시: 재시도"
+        }
+      ]
+    },
+    {
+      label: "알고있다.",
+      result: []
+    }
+  ]
+},
+
+{
+  id: "ch1_050",
+  type: "dialogue",
+  speaker: "dealerB",
+  text: "그럼, 부탁드릴게요 {player}."
+},
+
+{
+  id: "ch1_051",
+  type: "narration",
+  text: "[ 미니게임 시작 ]\n버튼을 눌러 시작하고 실패시 재도전 창, 성공 시 다음 스토리 진행 창"
+},
+
+{
+  id: "ch1_052",
+  type: "dialogue",
+  speaker: "player",
+  text: "휴… 제대로 한 거겠지…"
+},
+
+{
+  id: "ch1_053",
+  type: "narration",
+  text: "딜러의 역할이 크게 복잡하지 않아서 처음 설명을 듣고도 가볍게 진행되었다."
+},
+
+{
+  id: "ch1_054",
+  type: "dialogue",
+  speaker: "guestMan",
+  text: "오늘 룰렛이 나쁘지 않은데! 이대로면 R로 가서도 한탕하겠어!"
+},
+
+{
+  id: "ch1_055",
+  type: "narration",
+  text: "룰렛으로 흑자를 낸 거구의 남성이 호탕하게 웃으며 일행과 함께 테이블 R로 향했다."
+},
+
+{
+  id: "ch1_056",
+  type: "narration",
+  text: "지하 2층에서 가장 넓은 메인 테이블인 R에서는 한참 바카라가 진행중이었다."
+},
+
+{
+  id: "ch1_057",
+  type: "narration",
+  text: "붉은 눈의 사내 무리 또한 R에서 시끄럽게 떠들고 있었다."
+},
+
+{
+  id: "ch1_058",
+  type: "dialogue",
+  speaker: "player",
+  text: "(내가 없는 사이에 큰 소동이라도 벌어지진 않겠지…)"
+},
+
+{
+  id: "ch1_059",
+  type: "narration",
+  text: "테이블 B를 정리하고 있던 와중, 사내와 눈이 마주쳤지만…"
+},
+
+{
+  id: "ch1_060",
+  type: "dialogue",
+  speaker: "player",
+  text: "… 자정까지 20분."
+},
+
+{
+  id: "ch1_061",
+  type: "narration",
+  text: "신경쓰지 않기로 했다. 이런 곳에 그 같은 손님이 한둘 오는 것도 아니고."
+},
+
+{
+  id: "ch1_062",
+  type: "dialogue",
+  speaker: "player",
+  text: "(휩쓸리지 말자…)"
+},
+
+{
+  id: "ch1_063",
+  type: "narration",
+  text: "어쩐지 그 붉은 눈동자가 휘어지는 게 기분 나쁘게 느껴졌다."
+},
+
+{
+  id: "ch1_064",
+  type: "narration",
+  text: "[ 서류 봉투를 받으러 가자. ]"
+},
+
+{
+  id: "ch1_065",
+  type: "narration",
+  text: "테이블 B의 조명을 끈 뒤, 홀의 외곽을 따라 엘리베이터로 발을 옮겼다."
+},
+
+{
+  id: "ch1_066",
+  type: "dialogue",
+  speaker: "player",
+  text: "…"
+},
+
+{
+  id: "ch1_067",
+  type: "dialogue",
+  speaker: "player",
+  text: "(계단으로 갈 걸 그랬나.)"
+},
+
+{
+  id: "ch1_068",
+  type: "dialogue",
+  speaker: "player",
+  text: "(오늘따라 유독…)"
+},
+
+{
+  id: "ch1_069",
+  type: "narration",
+  text: "1층으로 올라온 나는 자연스럽게 바텐더실 뒤쪽 공간에서 나와 객석을 살폈다."
+},
+
+{
+  id: "ch1_070",
+  type: "dialogue",
+  speaker: "player",
+  text: "(밀색 머리카락에 갈색 눈동자…)"
+},
+
+{
+  id: "ch1_071",
+  type: "dialogue",
+  speaker: "player",
+  text: "(지금쯤 도착했을텐데 어디에 있는거지?)"
+},
+
+{
+  id: "ch1_072",
+  type: "dialogue",
+  speaker: "player",
+  text: "…"
+},
+
+{
+  id: "ch1_073",
+  type: "dialogue",
+  speaker: "unknown",
+  text: "{player}?"
+},
+
+{
+  id: "ch1_074",
+  type: "dialogue",
+  speaker: "player",
+  text: "…!"
+},
+
+{
+  id: "ch1_075",
+  type: "narration",
+  text: "바로 뒤에서 부르는 목소리에 순간 놀라 빠르게 몸을 돌렸다."
+},
+
+{
+  id: "ch1_076",
+  type: "dialogue",
+  speaker: "wheatMan",
+  text: "이렇게까지 놀라실 줄은…"
+},
+
+{
+  id: "ch1_077",
+  type: "narration",
+  text: "곤란하다는 듯 장난스럽게 웃어보인 그는 품에 갈색 서류 가방을 안고있었다."
+},
+
+{
+  id: "ch1_078",
+  type: "narration",
+  text: "호기심인지 모를 눈으로 바의 내부를 둘러보는 이 남자는 현재 『새벽』의 에이스로 불리는 통칭 조직원 y, ‘Flot’."
+},
+
+{
+  id: "ch1_079",
+  type: "dialogue",
+  speaker: "player",
+  text: "발소리를 내주셔야 알아챌 수 있습니다만…"
+},
+
+{
+  id: "ch1_080",
+  type: "narration",
+  text: "사실상 막내 위치나 다름 없는 이 사람은 『새벽』에 들어온지 한 달도 안 돼서 엄청난 성과를 이뤘다고 들었다."
+},
+
+{
+  id: "ch1_081",
+  type: "dialogue",
+  speaker: "player",
+  text: "(어느 간부한테 찍혔다는 말도 있던데…)"
+},
+
+{
+  id: "ch1_082",
+  type: "narration",
+  text: "솔직히, 첫인상은 호칭이 믿기지 않을 정도로 유약해보였다."
+},
+
+{
+  id: "ch1_083",
+  type: "dialogue",
+  speaker: "flot",
+  text: "1층을 둘러보고 계신줄 알았는데… 방해가 될까봐 그랬습니다."
+},
+
+{
+  id: "ch1_084",
+  type: "dialogue",
+  speaker: "player",
+  text: "찾고있었거든요. 이동할까요."
+},
+
+{
+  id: "ch1_085",
+  type: "narration",
+  text: "그를 데리고 다시 뒤쪽 복도의 엘리베이터로 이동해 이번엔 지하 3층으로 향했다."
+},
+
+{
+  id: "ch1_086",
+  type: "narration",
+  text: "백색의 조명으로 들어찬 직육면체 공간 안에 나란히 서서, 별다른 대화없이 버튼만 눌렀다."
+},
+
+{
+  id: "ch1_087",
+  type: "narration",
+  text: "곧이어 엘리베이터의 문이 열리고, 1층과는 사뭇 다른 분위기의 지하 3층 복도가 시야에 들어왔다."
+},
+
+{
+  id: "ch1_088",
+  type: "dialogue",
+  speaker: "flot",
+  text: "이전에 왔을 때보다 훨씬 화려해졌네요."
+},
+
+{
+  id: "ch1_089",
+  type: "dialogue",
+  speaker: "player",
+  text: "아마 그때는 얼룩말의 관할이 아니었을겁니다."
+},
+
+{
+  id: "ch1_090",
+  type: "narration",
+  text: "확실히 갬빗 루즈는 작년에 얼룩말과 그의 관계자들이 운영을 맡게 된 이후로 분위기가 많이 바뀌었다."
+},
+
+{
+  id: "ch1_091",
+  type: "narration",
+  text: "원래도 나쁘진 않았던 사업 수완이 훨씬 성장한 것도 사실이고."
+},
+
+{
+  id: "ch1_092",
+  type: "narration",
+  text: "엘리베이터에서 내린 플롯은 와인색 카펫이 깔린 통로를 걸으며 천장마다 걸린 샹들리에를 올려다봤다."
+},
+
+{
+  id: "ch1_093",
+  type: "dialogue",
+  speaker: "flot",
+  text: "얼룩말은 어떤 사람입니까? 객관적으로 말고, 그냥 그 분 주변에서 느끼는 감상으로요."
+},
+
+{
+  id: "ch1_choice_003",
+  type: "choice",
+  text: "어떻게 대답할까?",
+  choices: [
+    {
+      label: "유능한 상사",
+      result: [
+        {
+          id: "ch1_choice_003_a_001",
+          type: "dialogue",
+          speaker: "player",
+          text: "능력있고 실력 좋은 상사죠. 일처리도 확실하시고…"
+        }
+      ]
+    },
+    {
+      label: "좋은 사람",
+      result: [
+        {
+          id: "ch1_choice_003_b_001",
+          type: "dialogue",
+          speaker: "player",
+          text: "성실하고 성품 좋은 사람이랄까요. 어려울 때 많이 도와주셨어요."
+        }
+      ]
+    },
+    {
+      label: "잘 알지 못한다.",
+      result: [
+        {
+          id: "ch1_choice_003_c_001",
+          type: "dialogue",
+          speaker: "player",
+          text: "그렇게까지 가까운 사이는 아닙니다."
+        }
+      ]
+    }
+  ]
+},
+
+{
+  id: "ch1_094",
+  type: "dialogue",
+  speaker: "flot",
+  text: "…"
+},
+
+{
+  id: "ch1_095",
+  type: "dialogue",
+  speaker: "flot",
+  text: "그런가요."
+}
 ];
