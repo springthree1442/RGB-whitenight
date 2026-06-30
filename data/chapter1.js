@@ -299,7 +299,7 @@ const CHAPTER_1 = [
 
   {
     id: "ch1_037",
-    type: "narration",
+    type: "event",
     text: "[ 테이블 B로 가자. ]"
   },
   {
@@ -418,8 +418,8 @@ const CHAPTER_1 = [
 
 {
   id: "ch1_051",
-  type: "narration",
-  text: "[ 미니게임 시작 ]\n버튼을 눌러 시작하고 실패시 재도전 창, 성공 시 다음 스토리 진행 창"
+  type: "event",
+  text: "[ 미니게임 시작 ]"
 },
 
 {
@@ -501,7 +501,7 @@ const CHAPTER_1 = [
 
 {
   id: "ch1_064",
-  type: "narration",
+  type: "event",
   text: "[ 서류 봉투를 받으러 가자. ]"
 },
 
@@ -1104,7 +1104,7 @@ const CHAPTER_1 = [
 
 {
   id: "ch1_129",
-  type: "narration",
+  type: "event",
   text: "[ 전투 발생 ]"
 }
 ];
