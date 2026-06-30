@@ -12,6 +12,7 @@ let isTyping = false;
 let typingTimer = null;
 let fullText = "";
 let typingSpeed = 50; // 숫자가 작을수록 빠름
+let isEventShowing = false;
 
 const SAVE_KEY = "rgb_whitenight_save";
 
@@ -158,6 +159,8 @@ function showEventPopup(text) {
     eventPopup.classList.remove("show");
     eventPopup.classList.add("hidden");
 
+    isEventShowing = false;
+
     currentIndex++;
     renderCurrentLine();
   }, 1800);
@@ -265,6 +268,8 @@ function renderChoice(line) {
 // ===============================
 
 function nextLine() {
+  if (isEventShowing) return;
+
   if (isWaitingChoice) return;
 
   if (isTyping) {
