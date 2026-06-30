@@ -30,6 +30,7 @@ const dialogueText = document.getElementById("dialogue-text");
 const dialogueBox = document.getElementById("dialogue-box");
 const choiceBox = document.getElementById("choice-box");
 const chapterTitle = document.getElementById("chapter-title");
+const eventPopup = document.getElementById("event-popup");
 
 const taskButton = document.getElementById("task-button");
 const taskPanel = document.getElementById("task-panel");
@@ -141,6 +142,25 @@ function getCharacterColor(characterId) {
   if (!character) return "#f2f4f8";
 
   return character.color || "#f2f4f8";
+}
+
+function showEventPopup(text) {
+  eventPopup.textContent = text.replace("[", "").replace("]", "").trim();
+
+  eventPopup.classList.remove("hidden");
+  eventPopup.classList.remove("show");
+
+  void eventPopup.offsetWidth;
+
+  eventPopup.classList.add("show");
+
+  setTimeout(() => {
+    eventPopup.classList.remove("show");
+    eventPopup.classList.add("hidden");
+
+    currentIndex++;
+    renderCurrentLine();
+  }, 1800);
 }
 
 // ===============================
