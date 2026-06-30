@@ -146,11 +146,21 @@ function getCharacterColor(characterId) {
 }
 
 function showEventPopup(text) {
+  // 이전 대사 타자 효과 완전히 중단
+  clearTimeout(typingTimer);
+  isTyping = false;
+  fullText = "";
+  dialogueText.textContent = "";
+
+  // 이벤트 팝업 중에는 클릭 진행 금지
+  isEventShowing = true;
+
   eventPopup.textContent = text.replace("[", "").replace("]", "").trim();
 
   eventPopup.classList.remove("hidden");
   eventPopup.classList.remove("show");
 
+  // 애니메이션 재시작용
   void eventPopup.offsetWidth;
 
   eventPopup.classList.add("show");
