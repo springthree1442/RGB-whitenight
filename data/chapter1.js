@@ -986,5 +986,125 @@ const CHAPTER_1 = [
   type: "dialogue",
   speaker: "flot",
   text: "‘이걸’ 지키면서 상대하기엔 버거울지도 모르겠군요."
+},
+
+{
+  id: "ch1_121",
+  type: "narration",
+  text: "그는 내 쪽으로 서류 가방을 떠넘겨 안기고는 자세를 고쳐잡았다."
+},
+
+{
+  id: "ch1_122",
+  type: "dialogue",
+  speaker: "flot",
+  text: "원래 이런 잔바리들은 신참 순으로 맡는 거 아닙니까."
+},
+
+{
+  id: "ch1_123",
+  type: "dialogue",
+  speaker: "flot",
+  text: "당신이 얼룩말에게 전달 해주십쇼, {player}."
+},
+
+{
+  id: "ch1_choice_005",
+  type: "choice",
+  text: "어떻게 대답할까?",
+  choices: [
+    {
+      label: "그럴 수는 없다.",
+      result: [
+        {
+          id: "ch1_choice_005_a_001",
+          type: "dialogue",
+          speaker: "player",
+          text: "그럴 수는 없습니다."
+        }
+      ]
+    },
+    {
+      label: "맡겨달라.",
+      result: [
+        {
+          id: "ch1_choice_005_b_001",
+          type: "dialogue",
+          speaker: "player",
+          text: "맡겨주세요."
+        },
+        {
+          id: "ch1_choice_005_b_002",
+          type: "narration",
+          text: "플롯이 상대의 주의를 끌어 빠져나갈 틈을 만들어주었다."
+        },
+        {
+          id: "ch1_choice_005_b_003",
+          type: "narration",
+          text: "나는 그 사이로 뛰어들어 서류 가방을 안고 달리기 시작했다."
+        },
+        {
+          id: "ch1_choice_005_b_004",
+          type: "narration",
+          text: "쿵—!"
+        },
+        {
+          id: "ch1_choice_005_b_005",
+          type: "dialogue",
+          speaker: "flot",
+          text: "{player}!"
+        },
+        {
+          id: "ch1_choice_005_b_006",
+          type: "narration",
+          text: "둔탁한 소리가 바로 뒤에서 났고, 간발의 차로 내 쪽에 날아온 쇠파이프를 피한 듯 했다."
+        },
+        {
+          id: "ch1_choice_005_b_007",
+          type: "dialogue",
+          speaker: "flot",
+          text: "아무래도 한 명이 먼저 올라가긴 힘들 것 같습니다…"
+        }
+      ]
+    }
+  ]
+},
+
+{
+  id: "ch1_124",
+  type: "narration",
+  text: "우리는 통로의 앞과 뒤로 나뉘어 등을 맞대고 상대들을 주시했다."
+},
+
+{
+  id: "ch1_125",
+  type: "narration",
+  text: "그와 한 번도 같은 현장에서 일해본 적 없어서 그저 사교성 좋고 열심히 하는 막내 정도라고 생각했는데…"
+},
+
+{
+  id: "ch1_126",
+  type: "dialogue",
+  speaker: "flot",
+  text: "…"
+},
+
+{
+  id: "ch1_127",
+  type: "narration",
+  text: "에이스라고 불리는 데에는 다 이유가 있겠지."
+},
+
+{
+  id: "ch1_128",
+  type: "dialogue",
+  speaker: "flot",
+  text: "수적으로 이 쪽이 불리하니 서류 가방을 지키는 걸 가장 우선으로 하죠."
+},
+
+{
+  id: "ch1_129",
+  type: "narration",
+  text: "[ 전투 발생 ]"
 }
 ];
