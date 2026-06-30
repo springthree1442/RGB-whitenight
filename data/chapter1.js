@@ -748,5 +748,243 @@ const CHAPTER_1 = [
   type: "dialogue",
   speaker: "flot",
   text: "그런가요."
+},
+
+{
+  id: "ch1_096",
+  type: "narration",
+  text: "몇 걸음 걷지 않았을 때, 그가 바라보던 머리 위의 샹들리에가 불안정하게 흔들렸다."
+},
+
+{
+  id: "ch1_097",
+  type: "narration",
+  text: "작은 유리 장식들이 서로 엉키고 부딪히며 가느다란 소리를 냈다."
+},
+
+{
+  id: "ch1_098",
+  type: "dialogue",
+  speaker: "flot",
+  text: "…"
+},
+
+{
+  id: "ch1_099",
+  type: "narration",
+  text: "뒤이어 다음 순간,"
+},
+
+{
+  id: "ch1_100",
+  type: "narration",
+  text: "홀과 복도를 밝히던 모든 조명이 일제히 꺼졌다."
+},
+
+{
+  id: "ch1_101",
+  type: "dialogue",
+  speaker: "player",
+  text: "…?!"
+},
+
+{
+  id: "ch1_102",
+  type: "dialogue",
+  speaker: "player",
+  text: "(정전…?)"
+},
+
+{
+  id: "ch1_103",
+  type: "narration",
+  text: "멀리서 엘리베이터가 급정지 하는 둔탁한 소리가 들리고, 승강기 비상 안내음이 작게 흘러나왔다."
+},
+
+{
+  id: "ch1_104",
+  type: "narration",
+  text: "반대편 계단으로 향하는 통로에선 유리잔이 깨지는 소리와 비명 소리가 이어서 들려왔다."
+},
+
+{
+  id: "ch1_105",
+  type: "dialogue",
+  speaker: "player",
+  text: "(한 두명이 아니야…)"
+},
+
+{
+  id: "ch1_106",
+  type: "dialogue",
+  speaker: "flot",
+  text: "… 조심하세요!"
+},
+
+{
+  id: "ch1_107",
+  type: "narration",
+  text: "어둠 속에서 플롯의 두 손이 내 몸을 거칠게 밀쳐냈다."
+},
+
+{
+  id: "ch1_108",
+  type: "narration",
+  text: "휘청이며 벽에 부딪힌 직후, 날카로운 무언가가 방금 서있었던 자리를 가르며 날아갔다."
+},
+
+{
+  id: "ch1_109",
+  type: "dialogue",
+  speaker: "player",
+  text: "…!"
+},
+
+{
+  id: "ch1_110",
+  type: "dialogue",
+  speaker: "noisyMan",
+  text: "지하 3층 복도라고 한 거 확실해? 사람이라곤 저 두 명 뿐이잖아!"
+},
+
+{
+  id: "ch1_111",
+  type: "dialogue",
+  speaker: "noisyWoman",
+  text: "멍청하네. 저 두 사람인거라고."
+},
+
+{
+  id: "ch1_112",
+  type: "narration",
+  text: "지하 2층 홀에서 봤던 붉은 눈의 사내 무리의 일부가 통로를 둘러쌌다. 정작 붉은 눈 본인은 보이지 않았다."
+},
+
+{
+  id: "ch1_113",
+  type: "dialogue",
+  speaker: "player",
+  text: "(어느 틈에 여기까지…? 혹시, 계획된건가?)"
+},
+
+{
+  id: "ch1_114",
+  type: "narration",
+  text: "어둠 속에서 수많은 발걸음 소리가 위협적으로 앞뒤에서 들렸다."
+},
+
+{
+  id: "ch1_115",
+  type: "dialogue",
+  speaker: "player",
+  text: "(하지만 어떻게? 오늘 여기로 얼룩말의 서류가 오는 건 극히 소수만 알고 있다고 했는데.)"
+},
+
+{
+  id: "ch1_116",
+  type: "dialogue",
+  speaker: "noisyMan",
+  text: "이봐, 순순히 지시에 따라 움직이면 몸 성히 갈 수 있게 해주지."
+},
+
+{
+  id: "ch1_117",
+  type: "dialogue",
+  speaker: "noisyWoman",
+  text: "이대로 싸우는 건 당신들에게 무리일 걸."
+},
+
+{
+  id: "ch1_118",
+  type: "dialogue",
+  speaker: "flot",
+  text: "…"
+},
+
+{
+  id: "ch1_choice_004",
+  type: "choice",
+  text: "어떻게 할까?",
+  choices: [
+    {
+      label: "플롯의 상태를 먼저 확인한다.",
+      result: [
+        {
+          id: "ch1_choice_004_a_001",
+          type: "dialogue",
+          speaker: "player",
+          text: "다치진 않았습니까, 플롯?"
+        },
+        {
+          id: "ch1_choice_004_a_002",
+          type: "narration",
+          text: "나는 낮은 목소리로 작게 그의 상태를 물었다."
+        },
+        {
+          id: "ch1_choice_004_a_003",
+          type: "dialogue",
+          speaker: "flot",
+          text: "멀쩡합니다."
+        }
+      ]
+    },
+    {
+      label: "서류 가방의 위치를 묻는다.",
+      result: [
+        {
+          id: "ch1_choice_004_b_001",
+          type: "dialogue",
+          speaker: "player",
+          text: "플롯, 서류 가방은 잘 가지고 있습니까?"
+        },
+        {
+          id: "ch1_choice_004_b_002",
+          type: "narration",
+          text: "나는 붉은 눈 일행의 귀에 들리지 않게 그에게 작은 목소리로 물었다."
+        },
+        {
+          id: "ch1_choice_004_b_003",
+          type: "dialogue",
+          speaker: "flot",
+          text: "네, 제가 잘 가지고 있습니다."
+        }
+      ]
+    },
+    {
+      label: "복도 바닥과 벽을 더듬는다.",
+      result: [
+        {
+          id: "ch1_choice_004_c_001",
+          type: "narration",
+          text: "나는 재빠르게 움직여 벽면에 붙어있던 비상용 손전등을 발견했다."
+        },
+        {
+          id: "ch1_choice_004_c_002",
+          type: "narration",
+          text: "벽에서 손전등을 떼어내어 앞뒤를 비추어보니 상대는 약 대여섯 명 쯤이었다."
+        },
+        {
+          id: "ch1_choice_004_c_003",
+          type: "dialogue",
+          speaker: "flot",
+          text: "그렇게까지 많지는 않습니다."
+        }
+      ]
+    }
+  ]
+},
+
+{
+  id: "ch1_119",
+  type: "dialogue",
+  speaker: "flot",
+  text: "하지만…"
+},
+
+{
+  id: "ch1_120",
+  type: "dialogue",
+  speaker: "flot",
+  text: "‘이걸’ 지키면서 상대하기엔 버거울지도 모르겠군요."
 }
 ];
