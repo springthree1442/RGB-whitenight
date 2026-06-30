@@ -191,6 +191,15 @@ function renderCurrentLine() {
   return;
 }
 
+if (line.type === "event") {
+  speakerName.textContent = "";
+  dialogueText.textContent = "";
+  choiceBox.innerHTML = "";
+
+  showEventPopup(replacePlayerName(line.text));
+  return;
+}
+
   if (line.type === "narration") {
     speakerName.textContent = "";
     typeText(replacePlayerName(line.text));
